@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!-- the string following block must match the same string in base.thml
+for django to inject html in that position -->
+<!-- The html code will only be inject if the user hits the route/path -->
+{% block content %}
+<!-- all html and python code is written between the blocks -->
+
+<h1>Toy List</h1>
+
+{% for toy in toy_list %}
+    <a href="{% url 'toys_detail' toy.id %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ toy.name }}</span>
+                <p>Color: {{ toy.color }}</p>
+            </div>
+        </div>
+    </a>
+{% endfor %}
+
+{% endblock %}
